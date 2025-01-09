@@ -17,6 +17,9 @@ struct HomeView: View {
                     .font(.largeTitle)
                     .padding()
                 HStack {
+                    
+                    Spacer()
+                    
                     VStack {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Calories")
@@ -50,6 +53,21 @@ struct HomeView: View {
                             
                             Text("6 Hours")
                                 .bold()
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    ZStack {
+                        ZStack {
+                            Circle()
+                                .stroke(.red.opacity(0.3), lineWidth: 20)
+                            
+                            Circle()
+                                .trim(from: 0, to: 0.3)
+                                .stroke(.red, style: StrokeStyle(lineWidth: 20, lineCap: .round))
+                                .rotationEffect(.degrees(-90))
+                                .shadow(radius: 5)
                         }
                     }
                 }
