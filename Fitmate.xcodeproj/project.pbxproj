@@ -14,6 +14,7 @@
 		74BEF5522D3067D30090C23B /* FitnessTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BEF5512D3067D30090C23B /* FitnessTabView.swift */; };
 		74BEF5542D30690D0090C23B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BEF5532D30690D0090C23B /* HomeView.swift */; };
 		74BEF5562D3069260090C23B /* HistoricDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BEF5552D3069260090C23B /* HistoricDataView.swift */; };
+		74BEF5582D3072AA0090C23B /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BEF5572D3072AA0090C23B /* ProgressCircleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		74BEF5512D3067D30090C23B /* FitnessTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessTabView.swift; sourceTree = "<group>"; };
 		74BEF5532D30690D0090C23B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		74BEF5552D3069260090C23B /* HistoricDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricDataView.swift; sourceTree = "<group>"; };
+		74BEF5572D3072AA0090C23B /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				74BEF5512D3067D30090C23B /* FitnessTabView.swift */,
 				74BEF5532D30690D0090C23B /* HomeView.swift */,
+				74BEF5572D3072AA0090C23B /* ProgressCircleView.swift */,
 				74BEF5552D3069260090C23B /* HistoricDataView.swift */,
 			);
 			path = Views;
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74BEF5522D3067D30090C23B /* FitnessTabView.swift in Sources */,
+				74BEF5582D3072AA0090C23B /* ProgressCircleView.swift in Sources */,
 				74BEF5542D30690D0090C23B /* HomeView.swift in Sources */,
 				74BEF5562D3069260090C23B /* HistoricDataView.swift in Sources */,
 				74BEF5442D30646C0090C23B /* ContentView.swift in Sources */,

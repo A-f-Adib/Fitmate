@@ -59,16 +59,7 @@ struct HomeView: View {
                     Spacer()
                     
                     ZStack {
-                        ZStack {
-                            Circle()
-                                .stroke(.red.opacity(0.3), lineWidth: 20)
-                            
-                            Circle()
-                                .trim(from: 0, to: 0.3)
-                                .stroke(.red, style: StrokeStyle(lineWidth: 20, lineCap: .round))
-                                .rotationEffect(.degrees(-90))
-                                .shadow(radius: 5)
-                        }
+                       //45:12
                     }
                 }
             }
