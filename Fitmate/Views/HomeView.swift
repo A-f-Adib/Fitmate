@@ -27,6 +27,30 @@ struct HomeView: View {
                             Text("123 KCal")
                                 .bold()
                         }
+                        .padding(.bottom)
+                        
+                        
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Active")
+                                .font(.callout)
+                                .bold()
+                                .foregroundStyle(Color.green)
+                            
+                            Text("53 Mins")
+                                .bold()
+                        }
+                        .padding(.bottom)
+                        
+                        
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Stand")
+                                .font(.callout)
+                                .bold()
+                                .foregroundStyle(Color.blue)
+                            
+                            Text("6 Hours")
+                                .bold()
+                        }
                     }
                 }
             }
