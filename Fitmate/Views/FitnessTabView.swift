@@ -15,13 +15,15 @@ struct FitnessTabView: View {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.stackedLayoutAppearance.selected.iconColor = .green
-        
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.green]
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
     
     
     var body: some View {
+        
         TabView(selection: $selectedTab) {
+            
            HomeView()
                 .tag("Home")
                 .tabItem {
