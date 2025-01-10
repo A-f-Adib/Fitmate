@@ -20,6 +20,15 @@ struct HomeView: View {
         Activity(id: 3,  title: "Todays Steps",  subTitle: "Goal 12,000", image: "figure.walk", tintColor: .purple,  amount: "4893")
     ]
     
+    
+    var mockWorkouts = [
+        Workout(id: 0, title: "Running", image: "figure.run", tintColor: .cyan, duration: "51 mins", date: "Sept 2", calories: "512 KCal"),
+        Workout(id: 1, title: "Walking", image: "figure.walk", tintColor: .mint, duration: "30 mins", date: "Sept 3", calories: "344 KCal"),
+        Workout(id: 0, title: "Strength training", image: "figure.walk", tintColor: .indigo, duration: "25 mins", date: "Sept 4", calories: "567 KCal"),
+        Workout(id: 0, title: "Sprint Running", image: "figure.run", tintColor: .purple, duration: "40 mins", date: "Sept 5", calories: "980 KCal")
+    ]
+    
+    
     var body: some View {
         
         NavigationStack {
@@ -31,7 +40,8 @@ struct HomeView: View {
                     HStack {
                         
                         Spacer()
-                        
+                     
+                        //Overview section
                         VStack {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Calories")
@@ -70,6 +80,7 @@ struct HomeView: View {
                         
                         Spacer()
                         
+                        //Chart section
                         ZStack {
                             ProgressCircleView(progress: $calories, goal: 600, color: .red)
                             ProgressCircleView(progress: $active, goal: 60, color: .green).padding(.all, 20)
@@ -81,6 +92,8 @@ struct HomeView: View {
                     }
                     .padding()
                     
+                    
+                    //Fitness Activity section
                     HStack{
                         Text("Fitness Activity")
                             .font(.title2)
@@ -107,6 +120,8 @@ struct HomeView: View {
                     }
                     .padding(.horizontal)
                     
+                    
+                    //Recent WorkOut section
                     HStack {
                         Text("Recent Workouts")
                             .font(.title2)
@@ -121,6 +136,14 @@ struct HomeView: View {
                                 .foregroundColor(.white)
                                 .background(.blue)
                                 .cornerRadius(20)
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.top)
+                    
+                    LazyVStack{
+                        ForEach(mockWorkouts, id: \.id) { workout in
+                              WorkOutCardView(workout: workout)
                         }
                     }
                     .padding(.horizontal)
