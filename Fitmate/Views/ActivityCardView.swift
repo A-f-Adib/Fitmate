@@ -7,7 +7,18 @@
 
 import SwiftUI
 
+struct Activity {
+    let id: Int
+    let title: String
+    let subTitle: String
+    let image: String
+    let tintColor: Color
+    let amount: String
+}
+
 struct ActivityCardView: View {
+    
+    @State var activity: Activity
     
     var body: some View {
             
@@ -18,17 +29,18 @@ struct ActivityCardView: View {
             VStack {
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Todays Steps")
-                        Text("Goal 10,000")
+                        Text(activity.title)
+                        Text(activity.subTitle)
+                            .font(.caption)
                     }
                     
                     Spacer()
                     
-                    Image(systemName: "figure.walk")
-                        .foregroundColor(.green)
+                    Image(systemName: activity.image)
+                        .foregroundColor(activity.tintColor)
                 }
                 
-                Text("6,121")
+                Text(activity.amount)
                     .font(.title)
                     .bold()
                     .padding()
@@ -39,5 +51,10 @@ struct ActivityCardView: View {
 }
 
 #Preview {
-    ActivityCardView()
+    ActivityCardView(activity: Activity(id: 0,
+                                        title: "Todays Steps",
+                                        subTitle: "Goal 12,000",
+                                        image: "figure.walk",
+                                        tintColor: .green,
+                                        amount: "9812"))
 }
