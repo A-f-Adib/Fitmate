@@ -10,7 +10,7 @@ import HealthKit
 
 class HealthManager {
     
-    let shared = HealthManager()
+    static let shared = HealthManager()
     let healthStore = HKHealthStore()
     
     private init() { 
@@ -19,12 +19,27 @@ class HealthManager {
         let exercise = HKQuantityType(.appleExerciseTime)
         let stand = HKCategoryType(.appleStandHour)
         
+        let healthTypes : Set = [calories, exercise, stand]
+        
         Task {
             do {
-                try await healthStore.requestAuthorization(toShare: [], read: [])
+                try await healthStore.requestAuthorization(toShare: [], read: healthTypes)
             } catch {
-                
+                print(error.localizedDescription)
             }
         }
+    }
+    
+    func fetchTodayCaloriesBurned(completion: @escaping(Result<Double, Error>) -> Void) {
+        let calories = HKQuantityType(.activeEnergyBurned)
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfDay, end: Date())
+    }
+}
+
+
+extension Date {
+    static var startOfDay: Date {
+        let calendar = Calendar.current
+        return calendar.startOfDay(for: Date())
     }
 }

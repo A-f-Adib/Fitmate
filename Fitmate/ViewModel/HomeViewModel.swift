@@ -9,6 +9,8 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
     
+    let healthManager = HealthManager.shared
+    
     @Published var calories: Int = 123
     @Published var active: Int = 52
     @Published var stand: Int = 8
