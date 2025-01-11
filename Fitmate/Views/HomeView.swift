@@ -24,14 +24,14 @@ struct HomeView: View {
                         Spacer()
                      
                         //Overview section
-                        VStack {
+                        VStack(alignment: .leading) {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Calories")
                                     .font(.callout)
                                     .bold()
                                     .foregroundStyle(Color.red)
                                 
-                                Text("123 KCal")
+                                Text("\(viewModel.calories)")
                                     .bold()
                             }
                             .padding(.bottom)
@@ -43,7 +43,7 @@ struct HomeView: View {
                                     .bold()
                                     .foregroundStyle(Color.green)
                                 
-                                Text("53 Mins")
+                                Text("\(viewModel.active)")
                                     .bold()
                             }
                             .padding(.bottom)
@@ -55,7 +55,7 @@ struct HomeView: View {
                                     .bold()
                                     .foregroundStyle(Color.blue)
                                 
-                                Text("6 Hours")
+                                Text("\(viewModel.stand)")
                                     .bold()
                             }
                         }
