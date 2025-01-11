@@ -13,7 +13,19 @@ class HealthManager {
     static let shared = HealthManager()
     let healthStore = HKHealthStore()
     
-    private init() { 
+    
+    private init() {
+        Task {
+            do {
+                try await requestHealthKitAccess()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    func requestHealthKitAccess() async throws {
         
         let calories = HKQuantityType(.activeEnergyBurned)
         let exercise = HKQuantityType(.appleExerciseTime)
@@ -21,14 +33,10 @@ class HealthManager {
         
         let healthTypes : Set = [calories, exercise, stand]
         
-        Task {
-            do {
-                try await healthStore.requestAuthorization(toShare: [], read: healthTypes)
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
+        try await healthStore.requestAuthorization(toShare: [], read: healthTypes)
     }
+    
+    
     
     func fetchTodayCaloriesBurned(completion: @escaping(Result<Double, Error>) -> Void) {
         let calories = HKQuantityType(.activeEnergyBurned)
@@ -64,19 +72,18 @@ class HealthManager {
     }
     
     
-    func fetchTodayStandHours(completion: @escaping(Result<Double, Error>) -> Void) {
+    func fetchTodayStandHours(completion: @escaping(Result<Int, Error>) -> Void) {
         let stand = HKCategoryType(.appleStandHour)
         let predicate = HKQuery.predicateForSamples(withStart: .startOfDay, end: Date())
         
         let query = HKSampleQuery(sampleType: stand, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _, results, error in
-            guard let samples = results as? [ HKQuantitySample], error == nil else {
+            guard let samples = results as? [ HKCategorySample], error == nil else {
                 completion(.failure(NSError()))
                 return
             }
             
-            print(samples)
-            print(samples.map({ $0.quantity }))
-            completion(.success(2.0))
+            let standCount = samples.filter({ $0.value == 0 }).count
+            completion(.success(standCount))
         }
         
         healthStore.execute(query)
