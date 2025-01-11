@@ -29,4 +29,26 @@ class HomeViewModel: ObservableObject {
         Workout(id: 0, title: "Strength training", image: "figure.walk", tintColor: .indigo, duration: "25 mins", date: "Sept 4", calories: "567 KCal"),
         Workout(id: 0, title: "Sprint Running", image: "figure.run", tintColor: .purple, duration: "40 mins", date: "Sept 5", calories: "980 KCal")
     ]
+    
+    
+    init() {
+        
+        healthManager.fetchTodayCaloriesBurned { result in
+            switch result {
+            case .success(let success) :
+                print(success)
+            case .failure(let failure) :
+                print(failure.localizedDescription)
+            }
+        }
+        
+        healthManager.fetchTodayStandHours { result in
+            switch result {
+            case .success(let success) :
+                print(success)
+            case .failure(let failure) :
+                print(failure.localizedDescription)
+            }
+        }
+    }
 }
