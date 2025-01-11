@@ -10,6 +10,7 @@
 		746F48582D3303CB000DE13C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F48572D3303CB000DE13C /* HomeViewModel.swift */; };
 		746F485B2D330578000DE13C /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F485A2D330578000DE13C /* Activity.swift */; };
 		746F485D2D3305D9000DE13C /* WorkOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F485C2D3305D9000DE13C /* WorkOut.swift */; };
+		746F48602D330B3F000DE13C /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F485F2D330B3E000DE13C /* HealthManager.swift */; };
 		74BEF5422D30646C0090C23B /* FitmateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BEF5412D30646C0090C23B /* FitmateApp.swift */; };
 		74BEF5442D30646C0090C23B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BEF5432D30646C0090C23B /* ContentView.swift */; };
 		74BEF5462D3064750090C23B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74BEF5452D3064750090C23B /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		746F48572D3303CB000DE13C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		746F485A2D330578000DE13C /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		746F485C2D3305D9000DE13C /* WorkOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkOut.swift; sourceTree = "<group>"; };
+		746F485F2D330B3E000DE13C /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		74BEF53E2D30646C0090C23B /* Fitmate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fitmate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74BEF5412D30646C0090C23B /* FitmateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitmateApp.swift; sourceTree = "<group>"; };
 		74BEF5432D30646C0090C23B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		746F485E2D330B21000DE13C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				746F485F2D330B3E000DE13C /* HealthManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		74BEF5352D30646C0090C23B = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +99,7 @@
 			children = (
 				74BEF5412D30646C0090C23B /* FitmateApp.swift */,
 				74BEF5432D30646C0090C23B /* ContentView.swift */,
+				746F485E2D330B21000DE13C /* Manager */,
 				746F48592D330564000DE13C /* Model */,
 				746F48562D3303B3000DE13C /* ViewModel */,
 				74BEF5502D3067680090C23B /* Views */,
@@ -196,6 +207,7 @@
 				74BEF5522D3067D30090C23B /* FitnessTabView.swift in Sources */,
 				746F485D2D3305D9000DE13C /* WorkOut.swift in Sources */,
 				74BEF5582D3072AA0090C23B /* ProgressCircleView.swift in Sources */,
+				746F48602D330B3F000DE13C /* HealthManager.swift in Sources */,
 				74BEF5542D30690D0090C23B /* HomeView.swift in Sources */,
 				74C9F1AE2D31BE7500D2F09A /* ActivityCardView.swift in Sources */,
 				74BEF5562D3069260090C23B /* HistoricDataView.swift in Sources */,
