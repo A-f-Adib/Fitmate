@@ -103,7 +103,7 @@ class HealthManager {
             }
             
             let steps = quantity.doubleValue(for: .count())
-            let activity = Activity(id: 0, title: "Today Steps", subTitle: "Goal: 800", image: "figure.walk", tintColor: .green, amount: "\(Int(steps))")
+            let activity = Activity(id: 0, title: "Today Steps", subTitle: "Goal: 800", image: "figure.walk", tintColor: .green, amount: steps.formattedNumberString())
             completion(.success(activity))
         }
         healthStore.execute(query)
@@ -115,5 +115,23 @@ extension Date {
     static var startOfDay: Date {
         let calendar = Calendar.current
         return calendar.startOfDay(for: Date())
+    }
+    
+    static var startOfWeek: Date {
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date())
+        components.weekday = 2
+        return calendar.date(from: components) ?? Date()
+    }
+}
+
+
+extension Double {
+    func formattedNumberString() -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0
+        
+        return formatter.string(from: NSNumber(value: self)) ?? "0"
     }
 }

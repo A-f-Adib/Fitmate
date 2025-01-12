@@ -57,7 +57,7 @@ class HomeViewModel: ObservableObject {
             case .success(let calories) :
                 DispatchQueue.main.async {
                     self.calories = Int(calories)
-                    let activity = Activity(id: 1, title: "Calories Burned", subTitle: "Today", image: "flame", tintColor: .red, amount: "\(Int(calories))")
+                    let activity = Activity(id: 1, title: "Calories Burned", subTitle: "Today", image: "flame", tintColor: .red, amount: calories.formattedNumberString())
                     self.activities.append(activity)
                 }
             case .failure(let failure) :
