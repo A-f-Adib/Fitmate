@@ -30,8 +30,9 @@ class HealthManager {
         let calories = HKQuantityType(.activeEnergyBurned)
         let exercise = HKQuantityType(.appleExerciseTime)
         let stand = HKCategoryType(.appleStandHour)
+        let steps = HKQuantityType(.stepCount)
         
-        let healthTypes : Set = [calories, exercise, stand]
+        let healthTypes : Set = [calories, exercise, stand, steps]
         
         try await healthStore.requestAuthorization(toShare: [], read: healthTypes)
     }
@@ -86,6 +87,25 @@ class HealthManager {
             completion(.success(standCount))
         }
         
+        healthStore.execute(query)
+    }
+    
+    
+    //MARK: Fitness Activity
+    func fetchTodaySteps(completion: @escaping(Result<Activity, Error>) -> Void) {
+        let steps = HKQuantityType(.stepCount)
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfDay, end: Date())
+        
+        let query = HKStatisticsQuery(quantityType: steps, quantitySamplePredicate: predicate) { _, results, error in
+            guard let quantity = results?.sumQuantity(), error == nil else {
+                completion(.failure(NSError()))
+                return
+            }
+            
+            let steps = quantity.doubleValue(for: .count())
+            let activity = Activity(id: 0, title: "Today Steps", subTitle: "Goal: 800", image: "figure.walk", tintColor: .green, amount: "\(Int(steps))")
+            completion(.success(activity))
+        }
         healthStore.execute(query)
     }
 }
