@@ -118,6 +118,20 @@ class HealthManager {
                 completion(.failure(NSError()))
                 return
             }
+            
+            var runningCount: Int = 0
+            var strengthCount = 0
+            var soccerCount = 0
+            var basketballCount = 0
+            var stairsCount  = 0
+            var kickboxingCount = 0
+            
+            for workout in workouts {
+                let duration = Int(workout.duration)/60
+                if workout.workoutActivityType == .running {
+                    runningCount += duration
+                }
+            }
         }
     }
 }
