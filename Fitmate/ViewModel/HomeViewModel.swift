@@ -15,6 +15,8 @@ class HomeViewModel: ObservableObject {
     @Published var exercise: Int = 0
     @Published var stand: Int = 0
     
+    @Published var activities = [Activity]()
+    
    @Published var mockActivities = [
         Activity(id: 0,  title: "Todays Steps",  subTitle: "Goal 12,000", image: "figure.walk", tintColor: .green,  amount: "9812"),
         Activity(id: 1,  title: "Todays Steps",  subTitle: "Goal 12,000", image: "figure.walk", tintColor: .red,  amount: "12846"),
@@ -40,6 +42,7 @@ class HomeViewModel: ObservableObject {
                 fetchTodayCalories()
                 fetchTodayExerciseTime()
                 fetchTodayStandHours()
+                fetchTodaysSteps()
                 
             } catch {
                 print(error.localizedDescription)
@@ -54,6 +57,8 @@ class HomeViewModel: ObservableObject {
             case .success(let calories) :
                 DispatchQueue.main.async {
                     self.calories = Int(calories)
+                    let activity = Activity(id: 1, title: "Calories Burned", subTitle: "Today", image: "flame", tintColor: .red, amount: "\(Int(calories))")
+                    self.activities.append(activity)
                 }
             case .failure(let failure) :
                 print(failure.localizedDescription)
@@ -82,6 +87,20 @@ class HomeViewModel: ObservableObject {
             case .success(let hours) :
                 DispatchQueue.main.async {
                     self.stand = hours
+                }
+            case .failure(let failure) :
+                print(failure.localizedDescription)
+            }
+        }
+    }
+    
+    //MARK: Fitness Activity
+    func fetchTodaysSteps() {
+        healthManager.fetchTodaySteps { result in
+            switch result {
+            case .success(let activity) :
+                DispatchQueue.main.async {
+                    self.activities.append(activity)
                 }
             case .failure(let failure) :
                 print(failure.localizedDescription)
