@@ -111,6 +111,7 @@ class HealthManager {
     
     
     func fetchCurrentWeekWorkoutStats(completion: @escaping (Result<[Activity], Error>) -> Void) {
+        
         let workouts = HKSampleType.workoutType()
         let predicate = HKQuery.predicateForSamples(withStart: .startOfWeek, end: Date())
         let query = HKSampleQuery(sampleType: workouts, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: nil) { _, results, error in
@@ -130,6 +131,21 @@ class HealthManager {
                 let duration = Int(workout.duration)/60
                 if workout.workoutActivityType == .running {
                     runningCount += duration
+                }
+                else if workout.workoutActivityType == .traditionalStrengthTraining {
+                    strengthCount += duration
+                }
+                else if workout.workoutActivityType == .soccer {
+                    soccerCount += duration
+                }
+                else if workout.workoutActivityType == .basketball {
+                    basketballCount += duration
+                }
+                else if workout.workoutActivityType == .stairClimbing {
+                    stairsCount += duration
+                }
+                else if workout.workoutActivityType == .kickboxing {
+                    kickboxingCount += duration
                 }
             }
         }
