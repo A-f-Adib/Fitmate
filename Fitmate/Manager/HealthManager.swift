@@ -150,6 +150,20 @@ class HealthManager {
             }
         }
     }
+    
+    //2:00:30
+    
+    func generateActivitiesFromDurations(running: Int, strength: Int, soccer: Int, basketball: Int, stairs: Int, kickboxing: Int) -> [Activity] {
+        
+        return [
+            Activity(id: 0, title: "Running", subTitle: "This Week", image: "figure.run", tintColor: .green, amount: "\(running)"),
+            Activity(id: 1, title: "Strength Training", subTitle: "This Week", image: "dumbbell", tintColor: .blue, amount: "\(strength)"),
+            Activity(id: 2, title: "Soccer", subTitle: "This Week", image: "figure.soccer", tintColor: .indigo, amount: "\(soccer)"),
+            Activity(id: 3, title: "Basketball", subTitle: "This Week", image: "figure.basketball", tintColor: .red, amount: "\(basketball)"),
+            Activity(id: 4, title: "Stairstepper", subTitle: "This Week", image: "figure.stairs", tintColor: .cyan, amount: "\(stairs)"),
+            Activity(id: 5, title: "Kickboxing", subTitle: "This Week", image: "figure.kickboxing", tintColor: .purple, amount: "\(kickboxing)")
+        ]
+    }
 }
 
 
